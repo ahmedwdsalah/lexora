@@ -55,10 +55,5 @@
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
-  "pnpm": {
-    "overrides": {
-      "electron-to-chromium": "1.5.402"
-    }
-  },
   "private": true
 }
