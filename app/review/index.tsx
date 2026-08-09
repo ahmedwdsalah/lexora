@@ -174,6 +174,6 @@ const styles = StyleSheet.create({
   exCard: { backgroundColor: C.card, borderRadius: RD.md, padding: SP.md, marginTop: SP.lg, width: '100%' },
   exText: { fontSize: 15, color: C.ink, lineHeight: 21 },
   exTr: { fontSize: 12, color: C.inkSoft, marginTop: 4 },
-  againBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FDEEE6', borderRadius: RD.md, paddingVertical: 15, borderWidth: 1, borderColor: '#F8DCCB' },
+  againBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#3A2416', borderRadius: RD.md, paddingVertical: 15, borderWidth: 1, borderColor: '#5A3A28' },
   knewBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: C.primary, borderRadius: RD.md, paddingVertical: 15 },
 })

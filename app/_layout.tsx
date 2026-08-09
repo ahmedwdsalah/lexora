@@ -11,15 +11,25 @@ import * as Linking from 'expo-linking'
 
 function AuthCodeHandler() {
   const { signIn } = useAuthActions()
+  const toast = useStore((s) => s.toastMsg)
   useEffect(() => {
-    const handle = (e: { url: string }) => {
+    const handle = async (e: { url: string }) => {
       const code = Linking.parse(e.url).queryParams?.code
-      if (typeof code === 'string' && code) signIn(undefined as never, { code })
+      if (typeof code === 'string' && code) {
+        try {
+          await signIn(undefined as never, { code })
+          toast('Signed in successfully')
+        } catch {
+          toast('Google sign-in could not be completed')
+        }
+      }
     }
-    Linking.getInitialURL().then((url) => url && handle({ url }))
+    Linking.getInitialURL().then((url) => {
+      if (url) void handle({ url })
+    })
     const sub = Linking.addEventListener('url', handle)
     return () => sub.remove()
-  }, [signIn])
+  }, [signIn, toast])
   return null
 }
 
@@ -31,7 +41,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ConvexAuthProvider client={convex} storage={tokenStorage}>
         <AuthCodeHandler />
-        <StatusBar style="dark" />
+        <StatusBar style="light" />
         <Stack
           screenOptions={{
             headerShown: false,

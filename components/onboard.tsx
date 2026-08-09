@@ -96,17 +96,18 @@ export function ContinueFooter({ onPress, label = 'Continue', disabled }: { onPr
 }
 
 export function TileGrid({
-  items, value, onChange, cols = 2,
+  items, value, onChange, cols = 2, multi = false,
 }: {
   items: { id: string; label: string; icon?: IconName; color?: string; sub?: string; badge?: React.ReactNode }[]
-  value: string | null
+  value: string[] | string | null
   onChange: (id: string) => void
   cols?: 2 | 3
+  multi?: boolean
 }) {
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: SP.sm, paddingHorizontal: SP.lg }}>
       {items.map((it) => {
-        const on = value === it.id
+        const on = multi ? (value as string[]).includes(it.id) : value === it.id
         const w = items.length === 1 ? '100%' : cols === 2 ? '48%' : '31%'
         return (
           <PressBtn key={it.id} onPress={() => onChange(it.id)} style={{ width: w }} haptic="light">

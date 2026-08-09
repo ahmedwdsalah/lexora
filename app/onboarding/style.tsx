@@ -15,17 +15,18 @@ const OPTS: { id: string; label: string; sub: string; icon: IconName }[] = [
 
 export default function Style() {
   const setProfile = useStore((s) => s.setProfile)
-  const [sel, setSel] = useState<string | null>(null)
+  const [sel, setSel] = useState<string[]>([])
+  const toggle = (id: string) => setSel((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]))
   return (
     <OnboardShell
       step={1}
       total={5}
-      prompt="First — how do you learn best? There's no wrong answer, and we'll adapt as we go."
-      footer={<ContinueFooter onPress={() => { setProfile({ style: sel! }); router.push('/onboarding/time') }} disabled={!sel} />}
+      prompt="First — how do you learn best? Pick all that fit. There's no wrong answer, and we'll adapt as we go."
+      footer={<ContinueFooter onPress={() => { setProfile({ style: sel.join(', ') }); router.push('/onboarding/time') }} disabled={sel.length === 0} />}
       onBack={() => router.back()}
     >
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 0 }} showsVerticalScrollIndicator={false}>
-        <TileGrid items={OPTS} value={sel} onChange={setSel} />
+        <TileGrid items={OPTS} value={sel} onChange={toggle} multi />
       </ScrollView>
     </OnboardShell>
   )

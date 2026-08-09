@@ -122,6 +122,7 @@ export function PressBtn({
 }) {
   const scale = useRef(new Animated.Value(1)).current
   const press = () => {
+    if (haptic !== 'none') hap[haptic]()
     Animated.sequence([
       Animated.timing(scale, { toValue: 0.94, duration: 60, useNativeDriver: true }),
       Animated.spring(scale, { toValue: 1, friction: 4, tension: 240, useNativeDriver: true }),
@@ -296,70 +297,6 @@ export function Toggle({ value, onChange, color = C.primary }: { value: boolean;
         }}
       />
     </Pressable>
-  )
-}
-
-// ── Slider with tick haptics ────────────────────────────────────────────────
-export function Slider({
-  min, max, step, value, onChange, ticks = true, format,
-}: {
-  min: number
-  max: number
-  step: number
-  value: number
-  onChange: (v: number) => void
-  ticks?: boolean
-  format?: (v: number) => string
-}) {
-  const [w, setW] = useState(0)
-  const lastTick = useRef(value)
-  const pos = ((value - min) / (max - min)) * (w - 24)
-  const pan = useMemo(
-    () =>
-      PanResponder.create({
-        onStartShouldSetPanResponder: () => true,
-        onMoveShouldSetPanResponder: () => true,
-        onPanResponderGrant: (e) => {
-          const x = e.nativeEvent.locationX
-          setFromX(x)
-        },
-        onPanResponderMove: (e) => {
-          const x = e.nativeEvent.locationX
-          setFromX(x)
-        },
-      }),
-    [w, min, max, step]
-  )
-  const setFromX = (x: number) => {
-    if (!w) return
-    const ratio = Math.min(1, Math.max(0, x / w))
-    const v = min + Math.round((ratio * (max - min)) / step) * step
-    const clamped = Math.min(max, Math.max(min, v))
-    if (clamped !== lastTick.current) {
-      lastTick.current = clamped
-      if (ticks) hap.tick()
-      onChange(clamped)
-    }
-  }
-  return (
-    <View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: SP.sm }}>
-        {ticks &&
-          Array.from({ length: (max - min) / step + 1 }).map((_, i) => (
-            <Text key={i} style={[styles.tickLabel, { color: min + i * step === value ? C.primary : C.inkFaint }]}>
-              {format ? format(min + i * step) : min + i * step}
-            </Text>
-          ))}
-      </View>
-      <View
-        style={styles.sliderTrack}
-        onLayout={(e) => setW(e.nativeEvent.layout.width)}
-        {...pan.panHandlers}
-      >
-        <View style={[styles.sliderFill, { width: pos }]} />
-        <Animated.View style={[styles.sliderThumb, { left: pos }]} />
-      </View>
-    </View>
   )
 }
 

@@ -53,10 +53,10 @@ export default function Home() {
   const mastering = folders.filter((f) => words.some((w) => w.folderIds.includes(f.id) && w.strength > 0.7))
 
   const tiles: { icon: IconName; label: string; sub: string; to: any; bg: string; color: string }[] = [
-    { icon: 'scan', label: 'Scan notes', sub: 'Photograph your notebook', to: '/scan', bg: '#EEF4FD', color: '#2F6FD6' },
-    { icon: 'chat', label: 'AI Chat', sub: 'Talk with Lexa', to: '/chat', bg: '#F2EEFD', color: C.primary },
-    { icon: 'target', label: 'Practice', sub: 'Quizzes & games', to: '/practice/hub', bg: '#FDF0E8', color: '#D9772F' },
-    { icon: 'pin', label: 'Simulations', sub: 'Real-life scenes', to: '/chat/simulation', bg: '#E9F8F1', color: '#15956C' },
+    { icon: 'scan', label: 'Scan notes', sub: 'Photograph your notebook', to: '/scan', bg: '#16283F', color: '#2F6FD6' },
+    { icon: 'chat', label: 'AI Chat', sub: 'Talk with Lexa', to: '/chat', bg: '#262145', color: C.primary },
+    { icon: 'target', label: 'Practice', sub: 'Quizzes & games', to: '/practice/hub', bg: '#3A2416', color: '#D9772F' },
+    { icon: 'pin', label: 'Simulations', sub: 'Real-life scenes', to: '/chat/simulation', bg: '#12312A', color: '#15956C' },
   ]
 
   return (
@@ -69,27 +69,6 @@ export default function Home() {
           headerLargeTitleStyle: { fontFamily: fontBold },
           headerTitleStyle: { fontFamily: fontMedium },
           headerShadowVisible: false,
-          unstable_headerRightItems: () => [
-            {
-              element: (
-                <View style={styles.headerStreak}>
-                  <Icon name="flame" size={15} color={C.flame} filled />
-                  <Text style={{ color: C.ink, fontWeight: '800', fontSize: 13, marginLeft: 3 }}>{streak}</Text>
-                </View>
-              ),
-              onPress: () => onStreak(),
-              type: 'custom',
-            },
-            {
-              element: (
-                <View style={styles.headerAvatar}>
-                  <Text style={{ color: C.white, fontWeight: '800', fontSize: 13 }}>AH</Text>
-                </View>
-              ),
-              onPress: () => router.push('/profile'),
-              type: 'custom',
-            },
-          ],
         }}
       />
       <ScrollView
@@ -239,8 +218,6 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  headerStreak: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#FDEEE6', borderRadius: RD.full, paddingHorizontal: 12, paddingVertical: 6, borderWidth: 1, borderColor: '#F8DCCB' },
-  headerAvatar: { width: 32, height: 32, borderRadius: 16, backgroundColor: C.primary, alignItems: 'center', justifyContent: 'center' },
   sentenceCard: { backgroundColor: C.card, borderRadius: RD.md, borderWidth: 1, borderColor: C.line, padding: SP.lg },
   sentence: { fontSize: 15, lineHeight: 26, color: C.ink },
   reviewPill: { backgroundColor: C.ink, borderRadius: RD.full, paddingVertical: 13, alignItems: 'center' },

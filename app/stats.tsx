@@ -191,7 +191,7 @@ export default function Stats() {
         <View style={styles.mileCard}>
           {MILESTONES.map((m, i) => (
             <View key={m.label} style={[styles.mileRow, i > 0 && { borderTopWidth: 1, borderTopColor: C.lineSoft }]}>
-              <View style={[styles.mileIcon, { backgroundColor: m.got ? '#FBEED0' : C.lineSoft }]}>
+              <View style={[styles.mileIcon, { backgroundColor: m.got ? '#3A2F14' : C.lineSoft }]}>
                 <Icon name={m.icon} size={17} color={m.got ? C.gold : C.inkFaint} />
               </View>
               <Text style={{ flex: 1, color: m.got ? C.ink : C.inkMute, fontWeight: '600', fontSize: 14, marginLeft: SP.md }}>

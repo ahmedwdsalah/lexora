@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   mineChip: { flexDirection: 'row', alignItems: 'center', borderRadius: RD.full, paddingHorizontal: 12, paddingVertical: 7, marginRight: 8, marginBottom: 8 },
   groupTitle: { fontSize: 15, fontWeight: '700', color: C.ink, marginBottom: SP.sm, marginTop: SP.md },
   row: { flexDirection: 'row', alignItems: 'center', backgroundColor: C.card, borderRadius: RD.md, borderWidth: 1.5, borderColor: C.line, padding: SP.md },
-  rowOn: { borderColor: C.success, backgroundColor: '#F0FAF6' },
+  rowOn: { borderColor: C.success, backgroundColor: '#12312A' },
   badge: { width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
   addBtn: { width: 32, height: 32, borderRadius: 16, backgroundColor: C.primarySoft, alignItems: 'center', justifyContent: 'center' },
   search: { flexDirection: 'row', alignItems: 'center', backgroundColor: C.card, borderRadius: RD.md, borderWidth: 1, borderColor: C.line, paddingHorizontal: SP.md, marginBottom: SP.md },

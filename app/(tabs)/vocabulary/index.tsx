@@ -55,17 +55,6 @@ export default function VocabularyIndex() {
           headerLargeTitleStyle: { fontFamily: fontBold },
           headerTitleStyle: { fontFamily: fontMedium },
           headerShadowVisible: false,
-          unstable_headerRightItems: () => [
-            {
-              element: (
-                <View style={styles.searchBtn}>
-                  <Icon name={focused ? 'close' : 'search'} size={18} color={C.ink} />
-                </View>
-              ),
-              onPress: () => { hap.light(); setFocused(!focused); if (!focused) setQ('') },
-              type: 'custom',
-            },
-          ],
         }}
       />
       <ScrollView
@@ -190,7 +179,6 @@ export default function VocabularyIndex() {
 }
 
 const styles = StyleSheet.create({
-  searchBtn: { width: 38, height: 38, borderRadius: 12, backgroundColor: C.card, borderWidth: 1, borderColor: C.line, alignItems: 'center', justifyContent: 'center' },
   folderCard: { backgroundColor: C.card, borderRadius: RD.md, borderWidth: 1, borderColor: C.line, padding: SP.md, minHeight: 96 },
   folderIcon: { width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center' },
   folderName: { fontSize: 13, fontWeight: '700', color: C.ink, marginTop: SP.sm },

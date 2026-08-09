@@ -16,19 +16,20 @@ const OPTS: { id: string; label: string; sub: string; icon: IconName }[] = [
 
 export default function Struggle() {
   const setProfile = useStore((s) => s.setProfile)
-  const [sel, setSel] = useState<string | null>(null)
+  const [sel, setSel] = useState<string[]>([])
+  const toggle = (id: string) => setSel((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]))
   return (
     <OnboardShell
       step={5}
       total={5}
-      prompt="Last one — what trips you up the most? I will shape the plan around it."
+      prompt="Last one — what trips you up the most? Pick all that apply. I will shape the plan around them."
       footer={
         <ContinueFooter
           onPress={() => {
-            setProfile({ struggle: sel!, planSource: 'quiz' })
+            setProfile({ struggle: sel.join(', '), planSource: 'quiz' })
             router.push('/onboarding/generating')
           }}
-          disabled={!sel}
+          disabled={sel.length === 0}
         />
       }
       onBack={() => router.back()}
@@ -37,10 +38,10 @@ export default function Struggle() {
         kind="attention"
         title="Good to know"
         body="“Understanding natives” usually improves fastest with short listening reps — your plan will front-load those."
-        visible={!!sel}
+        visible={sel.length > 0}
       />
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 0 }} showsVerticalScrollIndicator={false}>
-        <TileGrid items={OPTS} value={sel} onChange={setSel} />
+        <TileGrid items={OPTS} value={sel} onChange={toggle} multi />
       </ScrollView>
     </OnboardShell>
   )

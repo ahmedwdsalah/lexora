@@ -1,19 +1,25 @@
 import { router } from 'expo-router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
 import { BrandMark, GoogleLogo } from '../../lib/icons'
 import { C, RD } from '../../lib/theme'
 import { PressBtn } from '../../components/ui'
 import { useStore } from '../../lib/store'
-import { useAuthActions } from '@convex-dev/auth/react'
+import { useAuthActions, useConvexAuth } from '@convex-dev/auth/react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import * as WebBrowser from 'expo-web-browser'
+import * as Linking from 'expo-linking'
 
 export default function Splash() {
   const insets = useSafeAreaInsets()
   const toast = useStore((s) => s.toastMsg)
   const { signIn } = useAuthActions()
+  const { isAuthenticated, isLoading } = useConvexAuth()
   const [busy, setBusy] = useState(false)
+
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) router.replace('/onboarding/welcome')
+  }, [isAuthenticated, isLoading])
 
   const onGoogle = async () => {
     if (busy) return
@@ -21,7 +27,11 @@ export default function Splash() {
     try {
       const res = await signIn('google', { redirectTo: 'lexora://' })
       if (res?.redirect) {
-        await WebBrowser.openAuthSessionAsync(res.redirect.toString(), 'lexora://')
+        const result = await WebBrowser.openAuthSessionAsync(res.redirect.toString(), 'lexora://')
+        if (result.type === 'success' && result.url) {
+          const code = Linking.parse(result.url).queryParams?.code
+          if (typeof code === 'string' && code) await signIn(undefined as never, { code })
+        } else if (result.type === 'cancel' || result.type === 'dismiss') toast('Google sign-in was cancelled')
       }
     } catch {
       toast('Google sign-in failed — try again')

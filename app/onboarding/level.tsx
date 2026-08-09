@@ -14,17 +14,18 @@ const OPTS: { id: string; label: string; sub: string; icon: IconName }[] = [
 
 export default function Level() {
   const setProfile = useStore((s) => s.setProfile)
-  const [sel, setSel] = useState<string | null>(null)
+  const [sel, setSel] = useState<string[]>([])
+  const toggle = (id: string) => setSel((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]))
   return (
     <OnboardShell
       step={3}
       total={5}
-      prompt="Where are you today? Challenge is tuned to stretch you — not to break you."
-      footer={<ContinueFooter onPress={() => { setProfile({ level: sel! }); router.push('/onboarding/motivation') }} disabled={!sel} />}
+      prompt="Where are you today? Pick all that fit. Challenge is tuned to stretch you — not to break you."
+      footer={<ContinueFooter onPress={() => { setProfile({ level: sel.join(', ') }); router.push('/onboarding/motivation') }} disabled={sel.length === 0} />}
       onBack={() => router.back()}
     >
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 0 }} showsVerticalScrollIndicator={false}>
-        <TileGrid items={OPTS} value={sel} onChange={setSel} />
+        <TileGrid items={OPTS} value={sel} onChange={toggle} multi />
       </ScrollView>
     </OnboardShell>
   )

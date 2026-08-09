@@ -88,7 +88,7 @@ export default function Speaking() {
 
         {phase === 'rec' && (
           <View style={{ marginTop: SP.xxl, alignItems: 'center' }}>
-            <Animated.View style={{ width: 120, height: 120, borderRadius: 60, backgroundColor: '#FDEEE6', alignItems: 'center', justifyContent: 'center', transform: [{ scale: pulse }] }}>
+            <Animated.View style={{ width: 120, height: 120, borderRadius: 60, backgroundColor: '#3A2416', alignItems: 'center', justifyContent: 'center', transform: [{ scale: pulse }] }}>
               <View style={{ width: 72, height: 72, borderRadius: 36, backgroundColor: C.flame, alignItems: 'center', justifyContent: 'center' }}>
                 <Icon name="mic" size={26} color={C.white} />
               </View>

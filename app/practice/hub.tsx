@@ -12,7 +12,7 @@ const TILES: { label: string; icon: IconName; to: string; bg: string; color: str
   { label: 'Typing', icon: 'keyboard', to: '/practice/typing', bg: '#EEEDFE', color: '#534AB7', desc: 'Produce the meaning from memory', time: '3 min' },
   { label: 'Quizzes', icon: 'dice', to: '/practice/quiz', bg: '#FAEEDA', color: '#854F0B', desc: 'Fast multiple choice rounds', time: '3 min' },
   { label: 'Matching', icon: 'grid', to: '/practice/quiz?kind=match', bg: '#FBE9F0', color: '#B33951', desc: 'Pair words with their meanings', time: '3 min' },
-  { label: 'Games', icon: 'bolt', to: '/practice/quiz?kind=game', bg: '#FDEEE6', color: '#D85A30', desc: 'Beat the clock on every question', time: '2 min' },
+  { label: 'Games', icon: 'bolt', to: '/practice/quiz?kind=game', bg: '#3A2416', color: '#D85A30', desc: 'Beat the clock on every question', time: '2 min' },
   { label: 'Sentence building', icon: 'type', to: '/practice/sentence', bg: '#EAF6F0', color: '#1F7A5A', desc: 'Rebuild real sentences tile by tile', time: '5 min' },
 ]
 

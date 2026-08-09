@@ -1,66 +1,31 @@
-import { AnimatedTabBar } from '@/components/motion-tabs/animated-tab-bar'
-import { TabIcon } from '@/components/tab-icon'
-import { ExamplePopupBody } from '@/components/motion-tabs/examples/example-popup-body'
-import type { BottomTabBarProps } from '@react-navigation/bottom-tabs'
-import { Tabs } from 'expo-router'
-import type { ReactElement } from 'react'
-import { Platform } from 'react-native'
+import { NativeTabs } from 'expo-router/unstable-native-tabs'
+import { C } from '@/lib/theme'
+
+const bg = { contentStyle: { backgroundColor: C.bg } }
 
 export default function TabsLayout() {
   return (
-    <Tabs
-      detachInactiveScreens={Platform.OS !== 'ios'}
-      initialRouteName="home"
-      screenOptions={{
-        animation: 'shift',
-        headerShown: false,
-        tabBarStyle: {
-          backgroundColor: 'transparent',
-          borderTopWidth: 0,
-          elevation: 0,
-          height: 0,
-          position: 'absolute',
-        },
-      }}
-      tabBar={(props): ReactElement => (
-        <AnimatedTabBar {...(props as unknown as BottomTabBarProps)} renderPopupBody={ExamplePopupBody} />
-      )}
-    >
-      <Tabs.Screen
-        name="home"
-        options={{
-          tabBarIcon: ({ color, size }) => <TabIcon color={color as string} name="home" size={size} />,
-          tabBarLabel: 'Home',
-        }}
-      />
-      <Tabs.Screen
-        name="vocabulary"
-        options={{
-          tabBarIcon: ({ color, size }) => <TabIcon color={color as string} name="library" size={size} />,
-          tabBarLabel: 'Vocabulary',
-        }}
-      />
-      <Tabs.Screen
-        name="scan"
-        options={{
-          tabBarIcon: ({ color, size }) => <TabIcon color={color as string} name="screenshot" size={size} />,
-          tabBarLabel: 'Scan',
-        }}
-      />
-      <Tabs.Screen
-        name="chat"
-        options={{
-          tabBarIcon: ({ color, size }) => <TabIcon color={color as string} name="messages" size={size} />,
-          tabBarLabel: 'Chat',
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          tabBarIcon: ({ color, size }) => <TabIcon color={color as string} name="profile" size={size} />,
-          tabBarLabel: 'Profile',
-        }}
-      />
-    </Tabs>
+    <NativeTabs tintColor={C.primary}>
+      <NativeTabs.Trigger name="home" {...bg}>
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="vocabulary" {...bg}>
+        <NativeTabs.Trigger.Label>Vocabulary</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="books.vertical.fill" md="library_books" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="scan" {...bg}>
+        <NativeTabs.Trigger.Label>Scan</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="camera.viewfinder" md="document_scanner" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="chat" {...bg}>
+        <NativeTabs.Trigger.Label>Chat</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="message.fill" md="chat_bubble" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="profile" {...bg}>
+        <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="person.crop.circle.fill" md="account_circle" />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   )
 }
