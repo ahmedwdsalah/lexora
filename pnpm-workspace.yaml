@@ -1,2 +1,2 @@
-overrides:
-  electron-to-chromium: 1.5.402
+onlyBuiltDependencies:
+  - esbuild
