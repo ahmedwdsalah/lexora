@@ -55,11 +55,5 @@
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"],
-    "allowBuilds": {
-      "esbuild": true
-    }
-  },
   "private": true
 }
