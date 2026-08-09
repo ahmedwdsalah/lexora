@@ -11,10 +11,10 @@ import { useStore } from '../../../lib/store'
 import type { Word } from '../../../lib/mock'
 
 const EXTRACTED: Word[] = [
-  { id: 'e1', term: 'desayunar', translation: 'to have breakfast', pronunciation: 'deh-sah-yoo-NAHR', example: 'Suelo desayunar a las ocho.', exampleTr: 'I usually have breakfast at eight.', folderIds: ['f-verbs', 'f-food'], source: 'scan', addedAt: '', reps: 0, due: true, strength: 0.2 },
-  { id: 'e2', term: 'la almohada', translation: 'pillow', pronunciation: 'ahl-moh-AH-dah', example: 'Necesito otra almohada.', exampleTr: 'I need another pillow.', folderIds: ['f-travel'], source: 'scan', addedAt: '', reps: 0, due: true, strength: 0.2 },
-  { id: 'e3', term: 'el albaricoque', translation: 'apricot', pronunciation: 'ahl-bah-ree-KOH-keh', example: 'El albaricoque está maduro.', exampleTr: 'The apricot is ripe.', folderIds: ['f-food'], source: 'scan', addedAt: '', reps: 0, due: true, strength: 0.2 },
-  { id: 'e4', term: 'aprovechar', translation: 'to take advantage of', pronunciation: 'ah-proh-veh-CHAR', example: 'Vamos a aprovechar el buen tiempo.', exampleTr: "Let's make the most of the good weather.", folderIds: ['f-verbs'], source: 'scan', addedAt: '', reps: 0, due: true, strength: 0.2 },
+  { id: 'e1', term: 'kahvaltı yapmak', translation: 'to have breakfast', pronunciation: 'kah-vahl-TUH yahp-mahk', example: 'Her sabah kahvaltı yaparım.', exampleTr: 'I have breakfast every morning.', folderIds: ['f-verbs', 'f-food'], source: 'scan', addedAt: '', reps: 0, due: true, strength: 0.2 },
+  { id: 'e2', term: 'yastık', translation: 'pillow', pronunciation: 'yahs-TUHk', example: 'Bir yastık daha lazım.', exampleTr: 'I need another pillow.', folderIds: ['f-travel'], source: 'scan', addedAt: '', reps: 0, due: true, strength: 0.2 },
+  { id: 'e3', term: 'kayısı', translation: 'apricot', pronunciation: 'kah-YUH-suh', example: 'Kayısı olgunlaşmış.', exampleTr: 'The apricot is ripe.', folderIds: ['f-food'], source: 'scan', addedAt: '', reps: 0, due: true, strength: 0.2 },
+  { id: 'e4', term: 'değerlendirmek', translation: 'to take advantage of', pronunciation: 'deh-er-len-DEER-mehk', example: 'Güzel havayı değerlendirelim.', exampleTr: "Let's make the most of the good weather.", folderIds: ['f-verbs'], source: 'scan', addedAt: '', reps: 0, due: true, strength: 0.2 },
 ]
 
 export default function ScanReview() {
@@ -152,7 +152,7 @@ export default function ScanReview() {
                 </View>
               </View>
             ))}
-            <Text style={{ textAlign: 'center', color: C.inkMute, fontSize: 12, marginTop: SP.sm }}>Reading handwriting — Spanish detected</Text>
+            <Text style={{ textAlign: 'center', color: C.inkMute, fontSize: 12, marginTop: SP.sm }}>Reading handwriting — Turkish detected</Text>
           </View>
         ) : (
           <View style={{ marginTop: SP.md }}>

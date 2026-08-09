@@ -26,7 +26,7 @@ export default function AddClip() {
   const save = () => {
     if (!content.trim()) return
     hap.medium()
-    add({ kind: kind as any, source: source.trim() || 'Unsaved clip', content: content.trim(), note: note.trim() || 'Saved while watching — Lexa will explain it.', words: [], idiom: content.includes('que') && content.split(' ').length < 12, lang: 'ES' })
+    add({ kind: kind as any, source: source.trim() || 'Unsaved clip', content: content.trim(), note: note.trim() || 'Saved while watching — Lexa will explain it.', words: [], idiom: content.split(' ').length < 12, lang: 'TR' })
     toast('Clip saved — words will surface in review')
     router.back()
   }
@@ -56,7 +56,7 @@ export default function AddClip() {
         <TextInput
           value={content}
           onChangeText={setContent}
-          placeholder="Paste the quote or line in Spanish…"
+          placeholder="Paste the quote or line in Turkish…"
           placeholderTextColor={C.inkFaint}
           style={[styles.input, styles.area]}
           multiline

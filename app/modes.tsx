@@ -59,9 +59,9 @@ export default function ChatModes() {
                   <Text style={styles.cardSub}>{meta.blurb}</Text>
                   <View style={styles.demoBubble}>
                     <Text style={{ color: C.ink, fontSize: 12, lineHeight: 17 }}>
-                      {m === 'comfort' && '“Me encanta el café por la mañana.” (all words you know)'}
-                      {m === 'growth' && '“Aprovecha el día — ¿qué tal si practicamos?” (+1 new word: aprovechar)'}
-                      {m === 'challenge' && '“No obstante, habría que matizar el enfoque.” (native pace)'}
+                      {m === 'comfort' && '“Sabah kahvemi çok severim.” (all words you know)'}
+                      {m === 'growth' && '“Günü değerlendir — pratik yapalım mı?” (+1 new word: değerlendirmek)'}
+                      {m === 'challenge' && '“Yine de, yaklaşımı biraz netleştirmek gerek.” (native pace)'}
                     </Text>
                   </View>
                 </View>

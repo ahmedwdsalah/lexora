@@ -106,7 +106,7 @@ export default function ReviewSession() {
                 <View style={styles.card}>
                   <View style={styles.cardTag}>
                     <Icon name="vocab" size={14} color={C.primary} />
-                    <Text style={{ color: C.primary, fontSize: 11, fontWeight: '700', marginLeft: 6 }}>SPANISH</Text>
+                    <Text style={{ color: C.primary, fontSize: 11, fontWeight: '700', marginLeft: 6 }}>TURKISH</Text>
                   </View>
                   <Text style={styles.term}>{w.term}</Text>
                   <Text style={styles.pron}>{w.pronunciation}</Text>

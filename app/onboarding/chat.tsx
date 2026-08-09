@@ -18,7 +18,7 @@ const REPLIES = [
 export default function OnboardChat() {
   const insets = useSafeAreaInsets()
   const [msgs, setMsgs] = useState<M[]>([
-    { id: 'm0', role: 'assistant', text: '¡Hola! I\'m Lexa. Tell me about yourself as a learner — why this language, what you want to do with it, what keeps failing. Free-form, no right answer.' },
+    { id: 'm0', role: 'assistant', text: 'Merhaba! I\'m Lexa. Tell me about yourself as a learner — why this language, what you want to do with it, what keeps failing. Free-form, no right answer.' },
   ])
   const [input, setInput] = useState('')
   const [typing, setTyping] = useState(false)

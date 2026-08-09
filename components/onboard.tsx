@@ -98,23 +98,26 @@ export function ContinueFooter({ onPress, label = 'Continue', disabled }: { onPr
 export function TileGrid({
   items, value, onChange, cols = 2,
 }: {
-  items: { id: string; label: string; icon: IconName; color?: string }[]
+  items: { id: string; label: string; icon?: IconName; color?: string; sub?: string; badge?: React.ReactNode }[]
   value: string | null
   onChange: (id: string) => void
   cols?: 2 | 3
 }) {
   return (
-    <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: SP.lg - 4 }}>
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: SP.sm, paddingHorizontal: SP.lg }}>
       {items.map((it) => {
         const on = value === it.id
-        const w = cols === 2 ? '48.5%' : '31.5%'
+        const w = items.length === 1 ? '100%' : cols === 2 ? '48%' : '31%'
         return (
-          <PressBtn key={it.id} onPress={() => onChange(it.id)} style={{ width: w, margin: 4 }} haptic="light">
+          <PressBtn key={it.id} onPress={() => onChange(it.id)} style={{ width: w }} haptic="light">
             <View style={[styles.tile, on && styles.tileOn, cols === 3 && { minHeight: 96 }]}>
-              <IconChipTile name={it.icon} color={it.color ?? C.primary} on={on} />
-              <Text style={[styles.tileLabel, { color: on ? C.primary : C.ink }]} numberOfLines={2}>
-                {it.label}
-              </Text>
+              {it.badge ?? <IconChipTile name={it.icon!} color={it.color ?? C.primary} on={on} />}
+              <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+                <Text style={[styles.tileLabel, { color: on ? C.primary : C.ink }]} numberOfLines={2}>
+                  {it.label}
+                </Text>
+                {!!it.sub && <Text style={styles.tileSub} numberOfLines={2}>{it.sub}</Text>}
+              </View>
             </View>
           </PressBtn>
         )
@@ -148,4 +151,5 @@ const styles = StyleSheet.create({
   tileOn: { borderColor: C.primary, backgroundColor: C.selected },
   tileChip: { width: 38, height: 38, borderRadius: 12, backgroundColor: C.primarySoft, alignItems: 'center', justifyContent: 'center' },
   tileLabel: { fontSize: 13, fontWeight: '600', marginTop: SP.sm },
+  tileSub: { fontSize: 11, color: C.inkMute, marginTop: 2, lineHeight: 15 },
 })

@@ -69,7 +69,7 @@ type State = {
 }
 
 const defaultProfile: Profile = {
-  language: 'ES',
+  language: 'TR',
   reason: '',
   style: '',
   minutes: 10,
@@ -90,7 +90,7 @@ export const useStore = create<State>()(
       clips: CLIPS,
       chatMode: 'growth',
       chat: [
-        { id: 'n0', role: 'assistant', text: '¡Hola, Ahmed! Soy Lexa. Hoy tenemos 8 palabras para repasar y un café pendiente en la simulación. ¿Por dónde empezamos?' },
+        { id: 'n0', role: 'assistant', text: 'Merhaba, Ahmed! Ben Lexa. Bugün tekrar edeceğimiz 8 kelime var ve simülasyonda bekleyen bir kahve. Nereden başlayalım?' },
       ],
       simMsgs: {},
       typing: false,
@@ -151,13 +151,13 @@ export const useStore = create<State>()(
       },
       sendSim: (simId, text) => {
         const { simMsgs } = get()
-        const msgs = simMsgs[simId] ?? [{ id: 's0', role: 'assistant', text: SIMS.find((x) => x.id === simId)?.starter ?? 'Hola.' }]
+        const msgs = simMsgs[simId] ?? [{ id: 's0', role: 'assistant', text: SIMS.find((x) => x.id === simId)?.starter ?? 'Merhaba.' }]
         set({ simMsgs: { ...simMsgs, [simId]: [...msgs, { id: nid(), role: 'user', text }] }, typing: true })
         const replies = [
-          'Muy bien. ¿Y qué más necesita? Le escucho.',
-          'Entendido. Ahora, un detalle importante: ¿en efectivo o con tarjeta?',
-          'Claro, sin problema. ¿Prefiere la opción de siempre o probar algo nuevo?',
-          'De acuerdo. Le repito: primero el formulario, luego la cola de la derecha.',
+          'Peki, başka ne lazım? Dinliyorum.',
+          'Anlaşıldı. Önemli bir detay: nakit mi, kartla mı?',
+          'Tabii, sorun değil. Her zamanki seçeneği mi yoksa yeni bir şey mi denersiniz?',
+          'Tamam. Tekrar ediyorum: önce form, sonra sağdaki kuyruk.',
         ]
         setTimeout(() => {
           const reply = replies[msgs.length % replies.length]
@@ -165,7 +165,7 @@ export const useStore = create<State>()(
         }, 1500)
       },
       resetSim: (simId) => {
-        const starter = SIMS.find((x) => x.id === simId)?.starter ?? 'Hola.'
+        const starter = SIMS.find((x) => x.id === simId)?.starter ?? 'Merhaba.'
         set((s) => ({ simMsgs: { ...s.simMsgs, [simId]: [{ id: nid(), role: 'assistant', text: starter }] } }))
       },
       setScan: (image, words) => set({ scanImage: image, extracted: words }),

@@ -9,10 +9,10 @@ import { CHAT_MODE_META } from '../../../lib/mock'
 import { useStore } from '../../../lib/store'
 
 const SUGGESTIONS = [
-  'Order a coffee in Spanish',
-  'Explain “tener ganas de”',
+  'Order a coffee in Turkish',
+  'Explain “kolay gelsin”',
   'Quiz me on this week’s words',
-  'Plan a weekend in Madrid',
+  'Plan a weekend in Istanbul',
 ]
 
 export default function ChatScreen() {
@@ -30,7 +30,7 @@ export default function ChatScreen() {
       msgs={msgs}
       typing={typing}
       onSend={send}
-      placeholder="Message Lexa in Spanish…"
+      placeholder="Message Lexa in Turkish…"
       suggestions={empty ? SUGGESTIONS : undefined}
       header={
         <View style={{ paddingTop: insets.top + SP.sm, paddingHorizontal: SP.lg, paddingBottom: SP.sm }}>

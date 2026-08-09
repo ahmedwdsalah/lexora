@@ -2,8 +2,7 @@ import { router } from 'expo-router'
 import { useState } from 'react'
 import { ScrollView } from 'react-native'
 import { useStore } from '../../lib/store'
-import { OnboardShell, ContinueFooter } from '../../components/onboard'
-import { SelCard } from '../../components/ui'
+import { OnboardShell, ContinueFooter, TileGrid } from '../../components/onboard'
 import type { IconName } from '../../lib/icons'
 
 const OPTS: { id: string; label: string; sub: string; icon: IconName }[] = [
@@ -25,10 +24,8 @@ export default function Style() {
       footer={<ContinueFooter onPress={() => { setProfile({ style: sel! }); router.push('/onboarding/time') }} disabled={!sel} />}
       onBack={() => router.back()}
     >
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 16 }} showsVerticalScrollIndicator={false}>
-        {OPTS.map((o) => (
-          <SelCard key={o.id} icon={o.icon} title={o.label} subtitle={o.sub} selected={sel === o.id} onPress={() => setSel(o.id)} />
-        ))}
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingHorizontal: 0 }} showsVerticalScrollIndicator={false}>
+        <TileGrid items={OPTS} value={sel} onChange={setSel} />
       </ScrollView>
     </OnboardShell>
   )

@@ -8,9 +8,7 @@ import { BlurHeader, hap, Header, PressBtn } from '../components/ui'
 import { useStore } from '../lib/store'
 
 const GROUPS: { title: string; codes: string[] }[] = [
-  { title: 'Common', codes: ['ES', 'FR', 'DE', 'IT', 'PT', 'ZH', 'JA', 'KO', 'AR', 'RU'] },
-  { title: 'Less commonly taught', codes: ['HI', 'TR', 'NL', 'SV', 'EL', 'PL', 'VI', 'TH'] },
-  { title: 'Regional varieties', codes: ['SW', 'UR'] },
+  { title: 'Available now', codes: ['TR'] },
 ]
 
 export default function Library() {
@@ -33,7 +31,7 @@ export default function Library() {
   return (
     <View style={{ flex: 1, backgroundColor: C.bg }}>
       <BlurHeader scrollY={sv}>
-        <Header back title="Language library" subtitle="Common, rare, and regional — no flags needed" />
+        <Header back title="Language library" subtitle="Turkish only — more languages coming soon" />
       </BlurHeader>
       <ReAnimated.ScrollView
         style={{ flex: 1 }}
@@ -108,7 +106,7 @@ export default function Library() {
         <View style={styles.foot}>
           <Icon name="info" size={15} color={C.inkMute} />
           <Text style={{ color: C.inkSoft, fontSize: 12, marginLeft: 8, flex: 1, lineHeight: 17 }}>
-            Regional varieties get their own badge, voice, and word bank — no flags, no ambiguity.
+            Turkish is the only supported language right now. More will come later.
           </Text>
         </View>
       </ReAnimated.ScrollView>

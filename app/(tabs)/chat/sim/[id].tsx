@@ -144,7 +144,7 @@ export default function SimConversation() {
 
         <View style={{ paddingHorizontal: SP.lg, paddingBottom: insets.bottom + SP.sm, flexDirection: 'row', alignItems: 'center' }}>
           <View style={styles.inputBox}>
-            <TextInput value={input} onChangeText={setInput} placeholder="Type in Spanish…" placeholderTextColor={C.inkFaint} style={styles.input} onSubmitEditing={() => doSend(input)} />
+            <TextInput value={input} onChangeText={setInput} placeholder="Type in Turkish…" placeholderTextColor={C.inkFaint} style={styles.input} onSubmitEditing={() => doSend(input)} />
           </View>
           <Pressable onPress={() => doSend(input)} onPressIn={holdStart} onPressOut={holdEnd} style={{ marginLeft: SP.sm }}>
             <View style={[styles.micBtn, { backgroundColor: input.trim() ? C.primary : sceneColor }]}>
